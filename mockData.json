@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "firstName": "Lyndsie",
+        "lastName": "Anthon",
+        "email": "lanthon0@jigsy.com",
+        "jobTitle": "Marketing Manager",
+        "gender": "Female"
+    },
+    {
+        "id": 2,
+        "firstName": "Arte",
+        "lastName": "Robins",
+        "email": "arobins1@instagram.com",
+        "jobTitle": "Accounting Assistant I",
+        "gender": "Male"
+    },
+    {
+        "id": 3,
+        "firstName": "Margarete",
+        "lastName": "Powder",
+        "email": "mpowder2@paypal.com",
+        "jobTitle": "Registered Nurse",
+        "gender": "Female"
+    },
+    {
+        "id": 4,
+        "firstName": "Allison",
+        "lastName": "Dannett",
+        "email": "adannett3@simplemachines.org",
+        "jobTitle": "Help Desk Technician",
+        "gender": "Female"
+    },
+    {
+        "id": 5,
+        "firstName": "Cazzie",
+        "lastName": "Iowarch",
+        "email": "ciowarch4@github.io",
+        "jobTitle": "Administrative Assistant IV",
+        "gender": "Male"
+    },
+    {
+        "id": 6,
+        "firstName": "Tamas",
+        "lastName": "Loffhead",
+        "email": "tloffhead5@mozilla.org",
+        "jobTitle": "Product Engineer",
+        "gender": "Male"
+    },
+    {
+        "id": 7,
+        "firstName": "Adolphus",
+        "lastName": "Whates",
+        "email": "awhates6@theatlantic.com",
+        "jobTitle": "Clinical Specialist",
+        "gender": "Male"
+    },
+    {
+        "id": 8,
+        "firstName": "Eleni",
+        "lastName": "Jedrzej",
+        "email": "ejedrzej7@ning.com",
+        "jobTitle": "Community Outreach Specialist",
+        "gender": "Female"
+    },
+    {
+        "id": 9,
+        "firstName": "Sharon",
+        "lastName": "Bayne",
+        "email": "sbayne8@unblog.fr",
+        "jobTitle": "Statistician I",
+        "gender": "Female"
+    },
+    {
+        "id": 10,
+        "firstName": "Silvano",
+        "lastName": "McKimmey",
+        "email": "smckimmey9@hud.gov",
+        "jobTitle": "Information Systems Manager",
+        "gender": "Male"
+    }
+]
