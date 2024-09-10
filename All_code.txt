@@ -1,0 +1,116 @@
+const express = require("express")
+const app = express();
+const port = 8080;
+
+const mongoose = require("mongoose");
+
+//Connection
+mongoose.connect("mongodb://127.0.0.1:27017/firstDB")
+    .then(() => console.log("MangoDB Connected"))
+    .catch((err) => console.log("Mongo Error", err));
+
+//Define user schema
+const userSchema = new mongoose.Schema({
+    firstName: {type: String,
+                required: true
+                },
+    lastName: { type: String
+                },
+    email:     {type: String,
+                required: true,
+                unique: true
+                },
+    jobTitle: {type: String
+              },
+    gender: {type:String
+            }
+}, { timestamps: true});
+
+//Schema Model
+const User = mongoose.model("user", userSchema);
+
+// app.use(express.urlencoded({extended: false}));
+
+app.route("/users")
+.get( async(req, res) => {
+    const allDBUsers = await User.find({});
+    const html = `<ul>
+                    ${allDBUsers.map((user) => 
+                        `<li>${user.firstName}</li>`).join("")}
+                  </ul>`;    
+    return res.send(html);   
+})
+
+.post(async(req, res) => {
+    //create new user
+    const body = req.body;
+    console.log(req);
+    
+    
+    if(!body ||
+        !body.firstName ||
+        !body.lastName ||
+        !body.email ||
+        !body.jobTitle ||
+        !body.gender
+    ){
+        return res.status(400).json({msg: "All feild are requied"});
+    }
+    const result = await User.create({
+        firstName: body.firstName,
+        lastName: body.lastName,
+        email: body.email,
+        jobTitle: body.jobTitle,
+        gender: body.gender
+    })
+    console.log(result);
+    
+    return res.status(201).json({msg: "Success"});
+})
+
+app.route('/users/:id')
+.get(async(req, res) => {
+    const id = req.params.id;
+    const user = await User.findById(id);
+    console.log(user);
+    
+    if(!user) return res.status(404).json({ error: "User not found"})
+    return res.json(user);
+})
+.post(async(req, res) => {
+    //create new user
+    const body = req.body;
+    if(!body ||
+        !body.firstName ||
+        !body.lastName ||
+        !body.email ||
+        !body.jobTitle ||
+        !body.gender
+    ){
+        return res.status(400).json({msg: "All feild are requied"});
+    }
+    const result = await user.create({
+        firstName: body.firstName,
+        lastName: body.lastName,
+        email: body.email,
+        jobTitle: body.jobTitle,
+        gender: body.gender
+    })
+    return res.status(201).json({msg: "Success"});
+})
+.put( async(req, res) => {
+    //Edit user with id
+    const body = req.body;
+    await User.findByIdAndUpdate(req.params.id, {firstName: body.firstName, lastName: body.lastName, email:body.email, jobTitle: body.jobTitle, gender: body.gender});
+    return res.json({ Status: `${req.params.id} get updated with new entry`});
+})
+.delete(async(req, res) => {
+    //Delete user with id
+    await User.findByIdAndDelete(req.params.id);
+    return res.json({ Status: 'Entry Deleted'});
+})
+
+
+
+app.listen(port, () => {console.log(`Server is started on post ${port}`);
+})
